@@ -128,3 +128,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+server/package.json
+server/package-lock.json
+server/models/index.js
+server/config/config.json
