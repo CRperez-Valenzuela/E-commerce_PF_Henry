@@ -3,7 +3,7 @@ const { Shoe, Size } = require('../../models');
 // Obtener todas las zapatillas
 exports.getAllShoes = async (req, res) => {
     try {
-        const shoes = await Shoe.findAll({ include: 'sizes' });
+        const shoes = await Shoe.findAll({ include: { model: Size, as: 'sizes' } });
         res.json(shoes);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching shoes' });
