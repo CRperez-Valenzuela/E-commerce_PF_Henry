@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    stock: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
     tableName: 'shoes'
