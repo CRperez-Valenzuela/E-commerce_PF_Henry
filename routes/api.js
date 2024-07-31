@@ -16,16 +16,16 @@ router.get('/users', async function(req, res, next) {
 });
 
 // Obtener todas las zapatillas
-router.get('/shoes', async (req, res) => {
-    try {
-      const shoes = await Shoe.findAll({ include: { model: Size, as: 'sizes' } });
-      console.log('Shoes:', shoes); // Verifica la salida en la consola
-      res.json(shoes);
-    } catch (error) {
-      console.error('Error fetching shoes:', error);
-      res.status(500).json({ message: 'Error fetching shoes' });
-    }
-  });
+router.get('/shoes', async function(req, res, next) {
+  try {
+    // El alias 'sizes' debe coincidir con el alias usado en el modelo `Shoe`
+    const shoes = await Shoe.findAll({ include: { model: Size, as: 'sizes' } });
+    res.json(shoes);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Error en el servidor');
+  }
+});
 
 // Obtener todas las tallas
 router.get('/sizes', async function(req, res, next) {
