@@ -1,11 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-  const Size = sequelize.define('Size', {
+  const Size = sequelize.define('sizes', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
+    },
     value: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
-    tableName: 'sizes'
+    tableName: 'sizes',
+    timestamps: false,
+    freezeTableName: true,
   });
 
   Size.associate = (models) => {
