@@ -29,6 +29,14 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    stock: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
     tableName: 'shoes',
@@ -37,7 +45,6 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Shoe.associate = (models) => {
-    // Cambia 'sizes' por 'Size' si el alias en el otro modelo es 'Size'
     Shoe.belongsToMany(models.Size, { through: models.ShoeSizes, foreignKey: 'shoeId', as: 'sizes' });
   };
 
