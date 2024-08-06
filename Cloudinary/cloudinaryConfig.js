@@ -1,4 +1,3 @@
-// config/cloudinaryConfig.js
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
@@ -12,8 +11,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'ecommerce', // Carpeta en Cloudinary donde se guardarán las imágenes
-    allowedFormats: ['jpg', 'png'],
+    folder: 'ecommerce',
+    allowed_formats: ['jpg', 'png'],
     transformation: [{ width: 500, height: 500, crop: 'limit' }],
   },
 });

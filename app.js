@@ -1,10 +1,11 @@
-// app.js
-
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+var passport = require('./config/passport'); // Importa la configuración de Passport
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,6 +23,17 @@ app.use(express.json()); // Parseo de JSON
 app.use(express.urlencoded({ extended: false })); // Parseo de datos URL-encoded
 app.use(cookieParser()); // Parseo de cookies
 app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos estáticos desde 'public'
+
+// Configuración de sesión
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Inicializar Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Configuración de rutas
 app.use('/', indexRouter); // Ruta principal
