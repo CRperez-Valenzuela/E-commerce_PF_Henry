@@ -4,7 +4,7 @@ var shoesController = require('../controllers/product/shoeController');
 var sizesController = require('../controllers/product/sizeController');
 var usersController = require('../controllers/product/userController');
 var { User, Shoe, Size, ShoeSizes, sequelize } = require('../models'); // Importa los modelos configurados con Sequelize
-var authController = require ('../controllers/user/authController');
+var authController = require ('../controllers/product/authController');
 
 // Rutas de autenticación
 router.post('/auth/login', authController.login);
@@ -29,9 +29,13 @@ router.delete('/sizes/:id', sizesController.deleteSize);
 
 // Obtener todos los usuarios
 router.get('/users', usersController.getAllUsers);
-router.get('/users/:id', usersController.getUserById);
-router.post('/users', usersController.createUser);
-router.put('/users/:id', usersController.updateUser);
+router.post('/users', usersController.register);
+router.post('/users', usersController.login);
+router.post('/users', usersController.getUserProfile);
+router.put('/users/:id', usersController.updateUserProfile);
+router.delete('/users/:id', usersController.deleteUser);
+
+
 
 // Ruta para obtener todas las relaciones entre zapatillas y tallas
 router.get('/shoesizes', async function(req, res, next) {
