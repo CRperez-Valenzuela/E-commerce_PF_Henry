@@ -3,8 +3,8 @@ var router = express.Router();
 var shoesController = require('../controllers/product/shoeController');
 var sizesController = require('../controllers/product/sizeController');
 var usersController = require('../controllers/product/userController');
-var passport = require('../config/passport'); // Asegúrate de importar la configuración de Passport
 var { User, Shoe, Size, ShoeSizes, sequelize } = require('../models'); // Importa los modelos configurados con Sequelize
+var authController = require ('../controllers/user/authController');
 
 // Rutas de autenticación
 router.post('/auth/login', authController.login);
