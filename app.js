@@ -1,17 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
-var passport = require('./config/passport'); // Importa la configuración de Passport
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
 require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
-var app = express();
+const app = express();
 
 // Configuración del motor de vistas
 app.set('views', path.join(__dirname, 'views'));
@@ -23,17 +22,7 @@ app.use(express.json()); // Parseo de JSON
 app.use(express.urlencoded({ extended: false })); // Parseo de datos URL-encoded
 app.use(cookieParser()); // Parseo de cookies
 app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos estáticos desde 'public'
-
-// Configuración de sesión
-app.use(session({
-  secret: 'your_secret_key',
-  resave: false,
-  saveUninitialized: false
-}));
-
-// Inicializar Passport
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(cors()); // Habilitar CORS
 
 // Configuración de rutas
 app.use('/', indexRouter); // Ruta principal

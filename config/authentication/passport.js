@@ -1,4 +1,4 @@
-const passport = require('passport');
+/*const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
@@ -71,7 +71,7 @@ async (accessToken, refreshToken, profile, done) => {
 }
 ));*/
 
-passport.serializeUser((user, done) => {
+/*passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
@@ -84,4 +84,4 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-module.exports = passport;
+module.exports = passport;*/
