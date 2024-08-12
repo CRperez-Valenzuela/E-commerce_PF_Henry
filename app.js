@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiRouter = require('./routes/api');
 
+
 const app = express();
 
 // Configuración del motor de vistas
@@ -28,6 +29,7 @@ app.use(cors()); // Habilitar CORS
 app.use('/', indexRouter); // Ruta principal
 app.use('/users', usersRouter); // Ruta para usuarios
 app.use('/api', apiRouter); // Ruta para API
+ // Ruta para paymen
 
 // Manejo de errores 404
 app.use(function(req, res, next) {

@@ -5,7 +5,10 @@ var sizesController = require('../controllers/product/sizeController');
 var usersController = require('../controllers/product/userController');
 var { User, Shoe, Size, ShoeSizes, sequelize } = require('../models'); // Importa los modelos configurados con Sequelize
 var authController = require ('../controllers/product/authController');
+var paymentController = require('../controllers/product/paymentController');
 
+
+router.post('/create-order', paymentController.createOrder )
 // Rutas de autenticación
 router.post('/auth/login', authController.login);
 router.post('/auth/register', authController.register);
