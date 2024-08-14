@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    ban: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     googleId: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -44,6 +48,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     freezeTableName: true,
   });
+
+  User.associate = (models) => {
+    User.belongsToMany(models.Addresses, { through: models.Useraddresses, foreignKey: 'userid', as: 'addresses' });
+    User.belongsToMany(models.Shoe, { through: models.Wishlist, foreignKey: 'userid', as: 'shoes' });
+  };
 
   return User;
 };
