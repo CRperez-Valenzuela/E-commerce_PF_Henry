@@ -37,6 +37,10 @@ module.exports = (sequelize, DataTypes) => {
     stock: {
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    enable: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   }, {
     tableName: 'shoes',

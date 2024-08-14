@@ -15,7 +15,13 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       },
       onDelete: 'CASCADE'
+    },
+
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
+
   }, {
     tableName: 'shoesizes',
     timestamps: false,
