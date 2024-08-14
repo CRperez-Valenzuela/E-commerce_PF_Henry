@@ -34,7 +34,7 @@ router.delete('/sizes/:id', sizesController.deleteSize);
 router.get('/users', usersController.getAllUsers);
 router.post('/users', usersController.register);
 router.post('/users', usersController.login);
-router.post('/users', usersController.getUserProfile);
+router.get('/users/:id', usersController.getUserProfile);
 router.put('/users/:id', usersController.updateUserProfile);
 router.delete('/users/:id', usersController.deleteUser);
 
